@@ -20,8 +20,8 @@ export class Countries {
     const { pathname, search, searchParams } = new URL(req.url)
     const options = Object.fromEntries(searchParams)
     const [ _, country ] = pathname.split('/')
-    let data = country ? await this.state.storage.get(country) : 
-                         await this.state.storage.list(options).then(list => Object.fromEntries(list)) 
+    let data = (country && country != 'api') ? await this.state.storage.get(country) : 
+                                               await this.state.storage.list(options).then(list => Object.fromEntries(list)) 
     return new Response(JSON.stringify({ 
       api: {
         name: 'countries.do.cf',

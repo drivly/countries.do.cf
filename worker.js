@@ -30,7 +30,10 @@ export class Countries {
       api: {
         name: 'countries.do.cf',
         icon: '🌎',
-        
+        endpoints: {
+          countries: 'https://countries.do.cf/?prefix=name.common',
+          borders: 'https://countries.do.cf/?prefix=borders', 
+        }
       },
       country,
       options,

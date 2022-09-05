@@ -8,8 +8,7 @@ export class Countries {
   constructor(state, env) {
     this.state = state
     this.state.blockConcurrencyWhile(async () => {
-      await this.state.storage.deleteAll()
-      const init = await this.state.storage.get('Aruba123')
+      const init = await this.state.storage.get('Aruba')
       if (!init) {
         const countries = await fetch('https://countries.do.cf/countries.json').then(res => res.json())
         countries.map(country => {

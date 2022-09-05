@@ -1,7 +1,7 @@
 const flatten = (obj, roots=[], sep='.') => Object.keys(obj).reduce((memo, prop) => Object.assign({}, memo, Object.prototype.toString.call(obj[prop]) === '[object Object]' ? flatten(obj[prop], roots.concat([prop]), sep) : {[roots.concat([prop]).join(sep)]: obj[prop]}), {})
 
 export default {
-  fetch: req => env.COUNTRIES.get(env.COUNTRIES.idFromName(req.cf.colo)).fetch(req)
+  fetch: (req, env) => env.COUNTRIES.get(env.COUNTRIES.idFromName(req.cf.colo)).fetch(req)
 }
 
 export class Countries {

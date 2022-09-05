@@ -10,7 +10,7 @@ export class Countries {
       if (!init) {
         const countries = await fetch('https://countries.do.cf/countries.json').then(res => res.json())
         countries.map(country => {
-          await this.state.storage.put(country.name.common, country)
+          this.state.storage.put(country.name.common, country)
           Object.entries(flatten(country)).map(([key, value]) => this.state.storage.put(`${key}: ${value} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common))
         })
       }

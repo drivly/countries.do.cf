@@ -1,6 +1,6 @@
 name = "countries-do-cf"
 account_id = "b6641681fe423910342b9ffa1364c76d"
-route = { pattern = "*/*", zone_id = "610c7d50a0eb08ba67af06925613f507" }
+route = { pattern = "countries.do.cf/*", zone_id = "610c7d50a0eb08ba67af06925613f507" }
 main = "worker.js"
 usage_model = "unbound"
 compatibility_date = "2022-08-27"

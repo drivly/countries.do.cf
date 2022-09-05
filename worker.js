@@ -24,8 +24,11 @@ export class Countries {
     const { pathname, search, searchParams } = new URL(req.url)
     const options = Object.fromEntries(searchParams)
     const country = decodeURI(pathname.split('/')[1])
-    let data = country ? await this.state.storage.get(country) : 
-                         await this.state.storage.list(options).then(list => Object.fromEntries(list)) 
+    const data = country ? await this.state.storage.get(country) : 
+                           await this.state.storage.list(options).then(list => Object.fromEntries(list)) 
+    const links = country ? Object.entries(flatten(data, { safe: true })).reduce((acc, [key, value]) => Array.isArray(value) ? 
+                            ({...acc, [`${key}: ${value}`]: `https://https://countries.do.cf?prefix=${key}: ${value}`}) : 
+                            value.map(arrayValue => this.state.storage.put(`${key}: ${arrayValue} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common)), {}) : undefined
     return new Response(JSON.stringify({ 
       api: {
         name: 'countries.do.cf',

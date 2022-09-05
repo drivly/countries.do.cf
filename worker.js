@@ -28,6 +28,7 @@ export class Countries {
         icon: '🌎',
         
       },
+      country,
       options,
       data,
       user: {

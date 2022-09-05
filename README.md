@@ -8,6 +8,8 @@ Countries Database Example in Cloudflare Durable Objects
 
 <https://countries.do.cf/?prefix=name.common&limit=5&skip=5&start=name.common:+N>
 
-<https://countries.do.cf/?prefix=borders&after=m&limit=10>
+## Example of reverse issue with start
 
-<https://countries.do.cf/?prefix=borders&after=m&limit=10&reverse=true>
+<https://countries.do.cf/?prefix=borders&start=m&limit=10>
+
+<https://countries.do.cf/?prefix=borders&start=m&limit=10&reverse=true>

@@ -12,7 +12,9 @@ Countries Database Example in Cloudflare Durable Objects
 ## Example of DO List issue with start when `reverse: true`
 
 This works as expected:
+
 <https://countries.do.cf/?start=borders:+M&limit=10>
+
 ```
 {
   "borders: MAC -> China": "https://countries.do.cf/China",
@@ -29,7 +31,9 @@ This works as expected:
 ```
 
 When `reverse=true` is added to the `list({reverse: true})` the behavior is not what is expected:
+
 <https://countries.do.cf/?start=borders:+M&limit=10&reverse=true>
+
 ```
 {
   "Åland Islands": { 
@@ -64,7 +68,9 @@ While this is what would be expected:
 ```
 
 It's clear that the initial filter is occuring before the reverse sort:
+
 <https://countries.do.cf/?prefix=borders&start=borders:+ZV&reverse=true>
+
 ```
 {
   "borders: ZWE -> Zambia": "https://countries.do.cf/Zambia",
@@ -76,7 +82,9 @@ It's clear that the initial filter is occuring before the reverse sort:
 
 
 It's also clear that the `prefix` argument is applied before `reverse` but after `start`
+
 <https://countries.do.cf/?prefix=borders&start=borders:+M&limit=10&reverse=true>
+
 ```
 {
   "borders: ZWE -> Zambia": "https://countries.do.cf/Zambia",

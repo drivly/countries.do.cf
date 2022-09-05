@@ -8,12 +8,14 @@ export class Countries {
   constructor(state, env) {
     this.state = state
     this.state.blockConcurrencyWhile(async () => {
-      const init = await this.state.storage.get('Aruba')
+      const init = await this.state.storage.get('Aruba123')
       if (!init) {
         const countries = await fetch('https://countries.do.cf/countries.json').then(res => res.json())
         countries.map(country => {
           this.state.storage.put(country.name.common, country)
-          Object.entries(flatten(country)).map(([key, value]) => this.state.storage.put(`${key}: ${value} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common))
+          Object.entries(flatten(country)).map(([key, value]) => Array.isArray(value) ? 
+               value.map(arrayValue => this.state.storage.put(`${key}: ${arrayValue} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common)) :
+               this.state.storage.put(`${key}: ${value} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common))
         })
       }
     })

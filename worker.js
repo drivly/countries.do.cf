@@ -14,7 +14,7 @@ export class Countries {
         countries.map(country => {
           this.state.storage.put(country.name.common, country)
           Object.entries(flatten(country)).map(([key, value]) => this.state.storage.put(`${key}: ${value} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common))
-        }
+        })
       }
     }
   }

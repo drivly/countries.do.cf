@@ -1,3 +1,5 @@
+import flatten from 'flat'
+
 export default {
   fetch: (req, env) => env.COUNTRIES.get(env.COUNTRIES.idFromName(req.cf.colo)).fetch(req)
 }
@@ -38,4 +40,4 @@ export class Countries {
   }
 }
 
-const flatten = (obj, roots=[], sep='.') => Object.keys(obj).reduce((memo, prop) => Object.assign({}, memo, Object.prototype.toString.call(obj[prop]) === '[object Object]' ? flatten(obj[prop], roots.concat([prop]), sep) : {[roots.concat([prop]).join(sep)]: obj[prop]}), {})
+// const flatten = (obj, roots=[], sep='.') => Object.keys(obj).reduce((memo, prop) => Object.assign({}, memo, Object.prototype.toString.call(obj[prop]) === '[object Object]' ? flatten(obj[prop], roots.concat([prop]), sep) : {[roots.concat([prop]).join(sep)]: obj[prop]}), {})

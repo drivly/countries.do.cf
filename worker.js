@@ -27,8 +27,8 @@ export class Countries {
     const data = country ? await this.state.storage.get(country) : 
                            await this.state.storage.list(options).then(list => Object.fromEntries(list)) 
     const links = country ? Object.entries(flatten(data, { safe: true })).reduce((acc, [key, value]) => Array.isArray(value) ? 
-                            ({...acc, [`${key}: ${value}`]: `https://https://countries.do.cf?prefix=${key}: ${value}`}) : 
-                            value.map(arrayValue => this.state.storage.put(`${key}: ${arrayValue} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common)), {}) : undefined
+                            value.map(arrayValue => ({...acc, [`${key}: ${value}`]: `https://https://countries.do.cf?prefix=${key}: ${value}`})) :
+                            ({...acc, [`${key}: ${value}`]: `https://https://countries.do.cf?prefix=${key}: ${value}`}), {}) :  undefined
     return new Response(JSON.stringify({ 
       api: {
         name: 'countries.do.cf',

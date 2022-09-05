@@ -16,7 +16,7 @@ export class Countries {
           Object.entries(flatten(country)).map(([key, value]) => this.state.storage.put(`${key}: ${value} -> ${country.name.common}`, 'https://countries.do.cf/' + country.name.common))
         })
       }
-    }
+    })
   }
   async fetch(req) {
     const { pathname, search, searchParams } = new URL(req.url)

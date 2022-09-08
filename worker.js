@@ -32,6 +32,7 @@ export class Countries {
         icon: '🌎',
         endpoints: {
           countries: 'https://countries.do.cf/?prefix=name.common',
+          altSpellings: 'https://countries.do.cf/?prefix=altSpellings',
           borders: 'https://countries.do.cf/?prefix=borders', 
         }
       },
